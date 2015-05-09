@@ -106,6 +106,9 @@ class FPM::Command < Clamp::Command
     "What this package provides (usually a name). This flag can be " \
     "specified multiple times.", :multivalued => true,
     :attribute_name => :provides
+  option "--no-auto-provides", :flag, "Do not list any provides in this " \
+    "package automatically", :default => false
+
   option "--conflicts", "CONFLICTS",
     "Other packages/versions this package conflicts with. This flag can " \
     "specified multiple times.", :multivalued => true,

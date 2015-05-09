@@ -370,8 +370,10 @@ class FPM::Package::RPM < FPM::Package
     self.conflicts += rpm.conflicts.collect do |name, operator, version|
       [name, operator, version].join(" ")
     end
-    self.provides += rpm.provides.collect do |name, operator, version|
-      [name, operator, version].join(" ")
+    if !attributes[:no_auto_provides?]
+      self.provides += rpm.provides.collect do |name, operator, version|
+        [name, operator, version].join(" ")
+      end
     end
     #input.replaces += replaces
 
